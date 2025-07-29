@@ -5,7 +5,7 @@ import { PolkadotApiModule } from '../polkadot-api/polkadot-api.module';
 
 @Module({
   imports: [PolkadotApiModule],
-  controllers: [AssetTransferController],
+  // controllers: [AssetTransferController],
   providers: [AssetTransferService],
   exports: [AssetTransferService], 
 })

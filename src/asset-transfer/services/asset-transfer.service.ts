@@ -63,15 +63,15 @@ export class AssetTransferService {
       const sender = keyring.addFromUri(senderSeed);
 
           // Fetch latest nonce
-      const nonce = await api.rpc.system.accountNextIndex(sender.address);
-    // Increase transaction priority by adding a tip
-    // const tip = api.registry.createType('Compact<Balance>', 1000000000);
-      const tip = 52100000;
+    //   const nonce = await api.rpc.system.accountNextIndex(sender.address);
+    // // Increase transaction priority by adding a tip
+    // // const tip = api.registry.createType('Compact<Balance>', 1000000000);
+    //   const tip = 52100000;
   
       const transfer = api.tx.assets.transfer(assetId, recipient, amount);
   
       return new Promise((resolve, reject) => {
-        transfer.signAndSend(sender, { nonce, tip },({ status, txHash, events }) => {
+        transfer.signAndSend(sender,({ status, txHash, events }) => {
           if (status.isFinalized) {
             let success = false;
             let dispatchError = '';
